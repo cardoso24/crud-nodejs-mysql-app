@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     references:{
       model: 'users'
     },
-    allowNull: false
+    
   },
     title: DataTypes.STRING,
     url: DataTypes.STRING,

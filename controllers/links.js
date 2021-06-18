@@ -5,8 +5,10 @@ module.exports.criarLink =((req,res)=>{
     res.render('links/add')
 });
 
- module.exports.guardarLink =((req,res)=>{
-     console.log(req.body)
-   res.send('Guardado') 
+ module.exports.guardarLink =(async(req,res)=>{
+     const links=req.body
+        await models.links.create(links)
+        
+     res.send('Guardado') 
     
 })
