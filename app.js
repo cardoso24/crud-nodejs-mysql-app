@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routes
 app.use('/users', require('./routes/users'))
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/links', require('./routes/links'));
 
 //middleware
 
