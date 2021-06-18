@@ -4,8 +4,9 @@ const linksController = require('../controllers/links');
 
 
 /* GET users listing. */
+router.get('/', linksController.mostrarLink)
 router.get('/add', linksController.abrirPageLink);
 router.post('/add', linksController.guardarLink);
-router.get('/', linksController.mostrarLink)
+
 
 module.exports = router;

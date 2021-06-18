@@ -1,6 +1,5 @@
 const models =require('../models');
-const links = require('../models/links');
-
+const { Op } = require('sequelize')
 
 module.exports.abrirPageLink =((req,res)=>{
     res.render('links/add')
@@ -14,7 +13,7 @@ module.exports.abrirPageLink =((req,res)=>{
 })
 module.exports.mostrarLink =(async(req,res)=>{
    const { title } = req.query
-    console.log(links.title)
+    console.log(title)
     const resultados = await models.links.findAll({
         where: {
             title: {
@@ -23,7 +22,7 @@ module.exports.mostrarLink =(async(req,res)=>{
         } 
     }) 
       
-    console.log(resultados)
+    console.log(resultados.length)
     
    
 })

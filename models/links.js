@@ -4,9 +4,9 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class links extends Model {
-   static associate(models) {
+    static associate(models) {
       this.belongsTo(models.users, {
-        foreignKey: 'idUsers',
+        foreignKey: 'user_id',
         id: 'id',
         as: 'user'
       })
@@ -15,19 +15,24 @@ module.exports = (sequelize, DataTypes) => {
   links.init({
     id:{
     type:DataTypes.INTEGER,
-    primaryKey:true,
-    references:{
-      model: 'users'
-    },
+    primaryKey:true
+    
     
   },
-    title:{
-    type: DataTypes.STRING
-    
-    },
+    title:{ 
+      type: DataTypes.STRING,
+      defaultValue: null // or whatever you would like
+},
     url: DataTypes.STRING,
     description: DataTypes.TEXT,
-    user_id: DataTypes.INTEGER
+    user_id: {
+     type: DataTypes.INTEGER,
+     references:{
+       model: 'users'
+     }
+     
+    }
+
   }, {
     sequelize,
     modelName: 'links',
