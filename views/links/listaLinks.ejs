@@ -1,0 +1,23 @@
+<div class="container p-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <% if (resultados.length > 0) { %>
+                            <ul>
+                            <% for (const resultado of resultados) { %>
+                                <li><%= resultado.title %></li>
+                            <% } %>
+                            </ul>
+                        <% } else { %>
+                            <h3>Nenhum resultado encontrado</h3>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+</div>
