@@ -6,6 +6,7 @@ module.exports.criarLink =((req,res)=>{
 });
 
  module.exports.guardarLink =((req,res)=>{
+     console.log(req.body)
    res.send('Guardado') 
     
 })
