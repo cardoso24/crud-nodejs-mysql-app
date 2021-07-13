@@ -2,55 +2,58 @@ const models = require('../models')
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
+const bcrypt =require('bcrypt');
 const path = require('path');
-const passport = require('passport')
-const { criarUsuario } = require('./usuarios');
-const { Op } = require('sequelize')
+const { criarUsuario, hash, compareHash } = require('./usuarios');
+
 
 
 module.exports.autenticarUsuario = (async (req, res) => {
-  const usuario = req.body
+  console.log('autenticarUsuario')
+  const usuario = req.body;
   const userDb = await models.users.findOne(
-    {
-      where: {
-        userName: usuario.userName
-      } 
-    }).then(userDb =>{
-      if(userDb){
-        res.status(400).send({
-           message: "logado"
-      })
-       
+    { where: {
+        userName: usuario.userName,
+        password: usuario.password     
       }
-      res.redirect('/links');
       
+    });
+    console.log(usuario.userName)
+    console.log(userDb.userName)
+  if (!userDb) {
+    res.render('home', {
+      error: {
+        email: 'Usuario nao encontrado'
+      },
+      value: usuario
     })
-  console.log(usuario.userName)
-  console.log(userDb.userName)
+  }
 
-  if (userDb.userName === usuario.userName) {
-    return passport.authenticate('local',{
-      successRedirect:"/links",
-      failureRedirect:"/"
-    })
-  }
-})
-    /* 
   
-/*   }
-  else {
-    console.log('nao existe');
+ 
+ if(!compareHash(usuario.password, userDb.password)){
+    res.render('home')
+      
+ }
+  
+
+  req.session.usuario = userDb;
+
+  res.redirect('/links');
+  
+  
+  function compareHash(password, hash) {
+    return bcrypt.compareSync(password, hash)
   }
-  res.redirect('/links') 
-}) */
+
+
+
+});
+
+
 
 
 module.exports.logoutUsuario = ((req, res) => {
   req.session.destroy();
   //fazer redirect
 })
-
-
-
-
-
