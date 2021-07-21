@@ -7,6 +7,7 @@ const session = require('express-session');
 const bcrypt =require('bcrypt');
 const passport =require('passport');
 const passportLocal =require('passport-local').Strategy
+const swal = require('sweetalert2')
 
 const usersRouter = require('./routes/users');
 
@@ -41,6 +42,7 @@ app.use(passport.session());
 app.use('/', require('./routes/index'))
 
 app.use('/links', require('./routes/links'));
+app.use('/agenda', require('./routes/agenda'));
 
 app.use('/register', require('./routes/users'))
 

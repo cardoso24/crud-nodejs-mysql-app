@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOTSTRAP 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Growlalerts -->
+    <link rel="stylesheet" href="dist/light-theme.min.css">
+    <link rel="stylesheet" href="dist/colored-theme.min.css">
+    <link rel="stylesheet" href="dist/dark-theme.min.css">  
     <link rel='stylesheet' href='/css/style.css'/>
     <title>Links App</title>
 </head>
@@ -18,7 +22,7 @@
             <div class="col-md-4 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/links/add" method="POST">
+                        <form action="/links/add" method="POST" id="myForm">
                             <div class="form-group">
                                 <label for="exampleFormControlInput1" class="form-label">Title:</label>
                                 <input type="text" class="form-control" name="title" placeholder="Title:" autofocus>
@@ -33,16 +37,18 @@
                                 <textarea name="description" rows="2" class="form-control" placeholder="Descriptions:"></textarea>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success btn-block save">SAVE</button>
+                            <button class="btn btn-success btn-block save" type="submit" id="btn-submit">SAVE</button>
                         </div>
                     </form>
                     </div>
-
+                    <button id="aplicar" onclick="myFunction()">enter</button>
                 </div>
             </div>
           </div>
+        
     </div>
-
-    
+    <script type="text/javascript" src="/js/sweet.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  
 </body>
 </html>

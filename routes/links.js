@@ -9,7 +9,7 @@ const linksController = require('../controllers/links');
 
 
 router.get('/', linksController.mostrarLink)
-
+router.get('/', linksController.abrirAgenda)
 router.get('/add', linksController.abrirPageLink);
 router.post('/add', linksController.guardarLink);
 router.post('/delete/:id', linksController.deleteLink);

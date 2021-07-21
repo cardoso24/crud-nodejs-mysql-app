@@ -27,6 +27,7 @@ module.exports.autenticarUsuario = (async (req, res) => {
       },
       value: usuario
     })
+    return
   }
 
   
